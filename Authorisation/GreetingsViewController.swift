@@ -7,23 +7,35 @@
 
 import UIKit
 
-class GreetingsViewController: UIViewController {
+final class GreetingsViewController: UIViewController {
 
+    @IBOutlet var greetLabel: UILabel!
+    @IBOutlet var greetEmojiLabel: UILabel!
+    
+    var greet: String!
+    var emoji: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        greetLabel.text = greet
+        greetEmojiLabel.text = emoji
+        
+        setGradientBackground()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [
+            UIColor.systemBlue.cgColor,
+            UIColor.purple.cgColor
+        ]
+        
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.locations = [0, 0.65, 0.7, 0.75, 0.8, 1]
+        gradientLayer.opacity = 0.5
+        
+        gradientLayer.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
-    */
-
 }
