@@ -14,8 +14,8 @@ final class MainViewController: UIViewController {
     
     @IBOutlet var logInButton: UIButton!
     
-    private var userName = "admin"
-    private var userPassword = "123"
+    private let userName = "admin"
+    private let userPassword = "123"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ final class MainViewController: UIViewController {
         guard let greetVC = segue.destination as? GreetingsViewController else {
             return
         }
-        greetVC.greet =  "Welcome, \(userNameTF.text ?? "Anonymous")"
+        greetVC.greet =  userName
         greetVC.emoji = "👋🏼"
     }
     
@@ -42,42 +42,31 @@ final class MainViewController: UIViewController {
     
     
     @IBAction func logInButtonTapped() {
-        if self.userNameTF.text == userName && self.passwordTF.text == userPassword {
+        if userNameTF.text == userName && passwordTF.text == userPassword {
+            performSegue(withIdentifier: "showGreetingsVC", sender: nil)
         } else {
             showAlert(
                 withTitle: "🤬Oops!",
-                andMessage: "You've entered wrong name or password"
+                andMessage: "You've entered wrong name or password",
+                textField: passwordTF
             )
         }
     }
     
-    @IBAction func nameReminderTapped() {
-        showAlert(
-            withTitle: "Oops 🤔, don't remember name?",
-            andMessage: "Use: admin"
-        )
+    @IBAction func forgotRegisteredData(_ sender: UIButton) {
+        sender.tag == 0
+        ? showAlert(withTitle: "Oops 🤔, don't remember name?", andMessage: "Use: admin")
+        : showAlert(withTitle: "Oops 🤯, don't remember password?", andMessage: "Use: 123")
     }
     
-    @IBAction func passReminderTapped() {
-        showAlert(
-            withTitle: "Oops 🤯, don't remember password?",
-            andMessage: "Use: 123"
-        )
-    }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
-        self.userNameTF.text = ""
-        self.passwordTF.text = ""
-        viewDidLoad()
+        userNameTF.text = ""
+        passwordTF.text = ""
     }
     
-    private func showAlert(withTitle title: String, andMessage message: String) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        
+    private func showAlert(withTitle title: String, andMessage message: String, textField: UITextField? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Got it", style: .default) { _ in
             self.passwordTF.text = ""
         }

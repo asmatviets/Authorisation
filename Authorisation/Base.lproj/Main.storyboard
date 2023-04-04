@@ -39,7 +39,6 @@
                                         </state>
                                         <connections>
                                             <action selector="logInButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="4LT-7M-w7R"/>
-                                            <segue destination="qe7-bb-BgI" kind="presentation" id="nEF-sG-97m"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -52,15 +51,15 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Forgot user name? "/>
                                         <connections>
-                                            <action selector="nameReminderTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="hIb-dA-paU"/>
+                                            <action selector="forgotRegisteredData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uOX-Na-DCS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-W5-W2W">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-W5-W2W">
                                         <rect key="frame" x="158" y="0.0" width="130" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Forgot password? "/>
                                         <connections>
-                                            <action selector="passReminderTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="Chr-vR-Xd7"/>
+                                            <action selector="forgotRegisteredData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E48-dB-Iiw"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -81,6 +80,7 @@
                         <outlet property="logInButton" destination="jkH-3r-i6P" id="Psp-1f-Kyc"/>
                         <outlet property="passwordTF" destination="Nvh-YG-6bi" id="DS4-ZM-JhZ"/>
                         <outlet property="userNameTF" destination="WLs-Sf-GUN" id="BXl-3W-Gs8"/>
+                        <segue destination="qe7-bb-BgI" kind="presentation" identifier="showGreetingsVC" modalPresentationStyle="fullScreen" id="TJk-fb-sBB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
