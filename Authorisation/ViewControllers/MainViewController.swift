@@ -14,9 +14,8 @@ final class MainViewController: UIViewController {
     
     @IBOutlet var logInButton: UIButton!
     
-    private let userName = "admin"
-    private let userPassword = "123"
-    
+    private var user = User.buildDataSet()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         logInButton.layer.cornerRadius = 15
@@ -25,14 +24,23 @@ final class MainViewController: UIViewController {
         userNameTF.autocapitalizationType = .none
         userNameTF.smartInsertDeleteType = .no
         passwordTF.isSecureTextEntry = true
+        
+        userNameTF.text = user.userName
+        passwordTF.text = user.passWord
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let greetVC = segue.destination as? GreetingsViewController else {
-            return
+        guard let tabBarController = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabBarController.viewControllers else { return }
+        
+        viewControllers.forEach { viewController in
+            if let greetVC = viewController as? GreetingsViewController {
+                greetVC.user =  user
+            } else if let navigationVC = viewController as? UINavigationController {
+                guard let personInfoVC = navigationVC.topViewController as? PersonInfoViewController else { return }
+                personInfoVC.user =  user
+            }
         }
-        greetVC.greet =  userName
-        greetVC.emoji = "👋🏼"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -40,16 +48,15 @@ final class MainViewController: UIViewController {
         view.endEditing(true)
     }
     
-    
     @IBAction func logInButtonTapped() {
-        if userNameTF.text == userName && passwordTF.text == userPassword {
-            performSegue(withIdentifier: "showGreetingsVC", sender: nil)
-        } else {
-            showAlert(
-                withTitle: "🤬Oops!",
-                andMessage: "You've entered wrong name or password",
-                textField: passwordTF
-            )
+        if userNameTF.text == user.userName && passwordTF.text == user.passWord {
+            performSegue(withIdentifier: "GreetingsViewController", sender: nil)
+        } else if userNameTF.text != user.userName || passwordTF.text != user.passWord {
+                showAlert(
+                    withTitle: "🤬Oops!",
+                    andMessage: "You've entered wrong name or password",
+                    textField: passwordTF
+                )
         }
     }
     
@@ -58,7 +65,6 @@ final class MainViewController: UIViewController {
         ? showAlert(withTitle: "Oops 🤔, don't remember name?", andMessage: "Use: admin")
         : showAlert(withTitle: "Oops 🤯, don't remember password?", andMessage: "Use: 123")
     }
-    
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
         userNameTF.text = ""
