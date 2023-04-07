@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A61590F29DD9A5300130818 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A61590E29DD9A5300130818 /* Extension.swift */; };
-		1A99B29529DD3F4A00609838 /* MainDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99B29429DD3F4A00609838 /* MainDataModel.swift */; };
+		1A61590F29DD9A5300130818 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A61590E29DD9A5300130818 /* Extension + UIView.swift */; };
+		1A99B29529DD3F4A00609838 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99B29429DD3F4A00609838 /* User.swift */; };
 		1A99B29A29DD4F7000609838 /* PersonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99B29929DD4F7000609838 /* PersonInfoViewController.swift */; };
 		1A99B29E29DD67E800609838 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99B29D29DD67E800609838 /* TabBarController.swift */; };
 		1A99B2A229DD715900609838 /* BiographyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99B2A129DD715900609838 /* BiographyViewController.swift */; };
@@ -22,8 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A61590E29DD9A5300130818 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		1A99B29429DD3F4A00609838 /* MainDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataModel.swift; sourceTree = "<group>"; };
+		1A61590E29DD9A5300130818 /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
+		1A99B29429DD3F4A00609838 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1A99B29929DD4F7000609838 /* PersonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoViewController.swift; sourceTree = "<group>"; };
 		1A99B29D29DD67E800609838 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1A99B2A129DD715900609838 /* BiographyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiographyViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		1A61591029DDA39000130818 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1A61590E29DD9A5300130818 /* Extension.swift */,
+				1A61590E29DD9A5300130818 /* Extension + UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -88,12 +88,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		1A99B29629DD3F6C00609838 /* DataModels */ = {
+		1A99B29629DD3F6C00609838 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1A99B29429DD3F4A00609838 /* MainDataModel.swift */,
+				1A99B29429DD3F4A00609838 /* User.swift */,
 			);
-			path = DataModels;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		1AF5F0B029D989C100BE549C = {
@@ -115,7 +115,7 @@
 		1AF5F0BB29D989C100BE549C /* Authorisation */ = {
 			isa = PBXGroup;
 			children = (
-				1A99B29629DD3F6C00609838 /* DataModels */,
+				1A99B29629DD3F6C00609838 /* Models */,
 				1A99B29329DD3F0800609838 /* Storyboards */,
 				1A61591029DDA39000130818 /* Extensions */,
 				1A99B29229DD3EF400609838 /* ViewControllers */,
@@ -200,10 +200,10 @@
 				1AF5F0C129D989C100BE549C /* MainViewController.swift in Sources */,
 				1A99B29A29DD4F7000609838 /* PersonInfoViewController.swift in Sources */,
 				1AF5F0BD29D989C100BE549C /* AppDelegate.swift in Sources */,
-				1A61590F29DD9A5300130818 /* Extension.swift in Sources */,
+				1A61590F29DD9A5300130818 /* Extension + UIView.swift in Sources */,
 				1AF5F0BF29D989C100BE549C /* SceneDelegate.swift in Sources */,
 				1A99B29E29DD67E800609838 /* TabBarController.swift in Sources */,
-				1A99B29529DD3F4A00609838 /* MainDataModel.swift in Sources */,
+				1A99B29529DD3F4A00609838 /* User.swift in Sources */,
 				1AF5F0D129D99E7C00BE549C /* GreetingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

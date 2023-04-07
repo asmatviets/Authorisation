@@ -14,7 +14,7 @@ final class MainViewController: UIViewController {
     
     @IBOutlet var logInButton: UIButton!
     
-    private var user = User.buildDataSet()
+    private var user = User.getUser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,22 +25,24 @@ final class MainViewController: UIViewController {
         userNameTF.smartInsertDeleteType = .no
         passwordTF.isSecureTextEntry = true
         
-        userNameTF.text = user.userName
+        userNameTF.text = user.nickName
         passwordTF.text = user.passWord
     }
 
+    // we can use full prepare func below in case we have no custom class for TabBarController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let tabBarController = segue.destination as? UITabBarController else { return }
-        guard let viewControllers = tabBarController.viewControllers else { return }
-        
-        viewControllers.forEach { viewController in
-            if let greetVC = viewController as? GreetingsViewController {
-                greetVC.user =  user
-            } else if let navigationVC = viewController as? UINavigationController {
-                guard let personInfoVC = navigationVC.topViewController as? PersonInfoViewController else { return }
-                personInfoVC.user =  user
-            }
-        }
+        guard let tabBarController = segue.destination as? TabBarController else { return }
+        tabBarController.user = user
+//        guard let viewControllers = tabBarController.viewControllers else { return }
+//
+//        viewControllers.forEach { viewController in
+//            if let greetVC = viewController as? GreetingsViewController {
+//                greetVC.user =  user
+//            } else if let navigationVC = viewController as? UINavigationController {
+//                guard let personInfoVC = navigationVC.topViewController as? PersonInfoViewController else { return }
+//                personInfoVC.user =  user
+//            }
+//        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,9 +51,9 @@ final class MainViewController: UIViewController {
     }
     
     @IBAction func logInButtonTapped() {
-        if userNameTF.text == user.userName && passwordTF.text == user.passWord {
-            performSegue(withIdentifier: "GreetingsViewController", sender: nil)
-        } else if userNameTF.text != user.userName || passwordTF.text != user.passWord {
+        if userNameTF.text == user.nickName && passwordTF.text == user.passWord {
+            performSegue(withIdentifier: "TabBarController", sender: nil)
+        } else if userNameTF.text != user.nickName || passwordTF.text != user.passWord {
                 showAlert(
                     withTitle: "🤬Oops!",
                     andMessage: "You've entered wrong name or password",

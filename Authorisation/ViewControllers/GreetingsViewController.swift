@@ -17,8 +17,8 @@ final class GreetingsViewController: UIViewController {
         super.viewDidLoad()
         view.addVerticalGradientLayer()
         greetLabel.text = """
-        Welcome, \(user.tutor)! \n
-        My name is \(user.person.name) \(user.person.surname)
+        Welcome, \(user.nickName)! \n
+        My name is \(user.person.fullName)
         """
     }
 }

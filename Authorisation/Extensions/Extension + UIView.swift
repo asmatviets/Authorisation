@@ -8,8 +8,7 @@
 import UIKit
 
 extension UIView {
-
-
+    
     func addVerticalGradientLayer() {
         let primaryColor = UIColor (
             red: 210/255,

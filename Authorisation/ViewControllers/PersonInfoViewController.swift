@@ -7,10 +7,14 @@
 
 import UIKit
 
-class PersonInfoViewController: UIViewController {
+final class PersonInfoViewController: UIViewController {
 
     
-    @IBOutlet var avatar: UIImageView!
+    @IBOutlet var avatar: UIImageView! {
+        didSet {
+            avatar.layer.cornerRadius = avatar.frame.height / 2
+        }
+    }
     @IBOutlet var fullNameAndAge: UILabel!
     @IBOutlet var occupation: UILabel!
     @IBOutlet var location: UILabel!
@@ -32,7 +36,7 @@ class PersonInfoViewController: UIViewController {
     
     private func loadModelDataToView() {
         avatar.image = UIImage(named: user.person.photo)
-        fullNameAndAge.text = user.person.name + " " + user.person.surname + ", " + user.person.age
+        fullNameAndAge.text = user.person.fullName + ", " + user.person.age
         occupation.text = user.person.occupation
         location.text = user.person.location
         hobbyValue.text = user.person.hobby
